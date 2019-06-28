@@ -1,9 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# @Time    : 2019/02/28
-# @Author  : r4v3zn
 # python 2.7
-# mysql 新建数据库fofa，字符集 utf8mb4  表 fofa_spider
+# mysql 新建数据库fofa，字符集 utf8mb4  表 fofa_spider  / 导入 fofa.sql
 
 import sys
 import requests

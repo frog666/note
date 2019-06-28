@@ -46,9 +46,9 @@ port = 3306
 # 编码，默认不需要更改
 charset = 'utf8'
 # FOFA 用户名
-fofa_name = 'om2bg0dyxpkrkccnjyrfb-o-tcgy@open_wechat'
+fofa_name = ''
 # FOFA 用户key
-fofa_key = 'db6073d9a117694047670adbe6b190b5'
+fofa_key = ''
 # FOFA 每页数量,默认为1万可自行修改
 page_size = 100 # 10000
 # 起始页码，默认不需要更改

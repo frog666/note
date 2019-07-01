@@ -14,6 +14,12 @@ if __name__ == "__main__":
     # url = 'http://127.0.0.1:8082/one.jsp'
     # 这是代理IP
     proxy = [{'http': '127.0.0.1:1081', 'https': 'socks5h://127.0.0.1:1081'}]  # 使用时需要ss填写正确，并且关闭代理软件
+    '''
+    异常： requests.exceptions.SSLError: SOCKSHTTPSConnectionPool(host='www.google.com', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLError("bad handshake: SysCallError(-1, 'Unexpected EOF')")))
+    解决： 'https':'socks5://127.0.0.1:1081' 改成 'https':'socks5h://127.0.0.1:1081'
+    # the proxy string, socks5h:// and socks4a:// mean that the hostname is to be resolved by the socks server.
+    # socks5:// and socks4:// mean the hostname is to be resolved locally
+    '''
     # 创建ProxyHandler
     httpproxy_handler = request.ProxyHandler(proxy[0])
     nullproxy_handler = request.ProxyHandler({})

@@ -67,7 +67,7 @@ class FofaSpider:
         结论 requests.get 打印出的网页 格式与 accept字段密切相关，默认打印html格式页面
         
         '''
-        response = requests.get(url=url, headers=self.headers)  # , headers=header2
+        response = requests.get(url=url, headers=self.headers)  
         soup = BeautifulSoup(response.content.decode('utf-8'), 'lxml')
 
         all_t = soup.find_all("div", class_="list_mod_t")

@@ -46,6 +46,7 @@ class FofaSpider:
         count = 0
         for k in all_t:
             num = k.find_all('a')
+            # 根据需要过滤https,只留下http
             if ("http" in num[0].get('href')) & ("https" not in num[0].get('href')):
                 ip = num[0]['href']
                 self.file_put(ip)

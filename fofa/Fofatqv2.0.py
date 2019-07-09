@@ -122,7 +122,7 @@ if __name__ == "__main__":
     # 要爬取得页数，page=n+1,page = 2 则只爬取第一页
     page = 15
     starttime = datetime.datetime.now()
-    for i in range(14, page):
+    for i in range(1, page):
         query_url = "https://fofa.so/result?page=" + str(
             i) + "&qbase64=" + fofaSpider.query_str_qbase64_urlencode  # "&q=" + fofaSpider.query_str_urlencode +
         print("第" + str(i) + "页 " + query_url)

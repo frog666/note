@@ -13,3 +13,7 @@
 ### 学习网络安全网站
 
 [Connect trojan](https://www.connect-trojan.net/)
+
+### 优质博客
+
+[klion's blog](https://klionsec.github.io)

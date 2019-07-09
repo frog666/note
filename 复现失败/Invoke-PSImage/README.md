@@ -43,6 +43,7 @@ msf生成的payload执行可以反弹,但无法附加到生成的图片中执行
 打开受控端powershell,执行
 
 ```Import-Module C:\Users\Administrator\Desktop\Invoke-PSImage.ps1```
+
 ```Invoke-PSImage -Script C:\Users\Administrator\Desktop\img5.ps1 -Image C:\Users\Administrator\Desktop\q.jpg -Out C:\Users\Administrator\Desktop\ss.png```
 
 回显

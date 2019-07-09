@@ -67,6 +67,6 @@ evil.ps1 为我写的一个在powershell中输出 test 的小脚本，用于测�
 ```$powershell -exec bypass```   # 在 cmd 执行powershell
 
 
-
+**注意：图片像素数应大于payload字节数**
 
 

@@ -66,7 +66,7 @@ evil.ps1 为我写的一个在powershell中输出 test 的小脚本，用于测�
 
 ```$powershell -exec bypass``` 或 ```$powershell```   # 在 cmd唤起powershell
 
-（系统默认是禁止执行ps脚本的,所以实际用的时候后面都会带上bypass选项）
+（系统默认是禁止执行ps脚本的,所以实际用的时候后面都会带上bypass选项;有权限可以直接输入powershell，无需提权）
 
 
 powershell中输入如下，弹出计算器
@@ -80,6 +80,8 @@ PS $```sal a New-Object;Add-Type -AssemblyName "System.Drawing";$g=a System.Draw
 ### 参考资料
 
 [powershell攻击集](https://github.com/samratashok/nishang)
+
+[Invoke-Mimikatz.ps1获取系统密码](https://cloud.tencent.com/info/b7a0330b78657d5b4c89a53d9e3061e4.html)
 
 
 

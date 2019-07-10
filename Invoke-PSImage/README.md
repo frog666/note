@@ -69,4 +69,6 @@ evil.ps1 为我写的一个在powershell中输出 test 的小脚本，用于测�
 
 **注意：图片像素数应大于payload字节数**
 
+### 参考资料
 
+[powershell攻击集](https://github.com/samratashok/nishang)

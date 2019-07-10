@@ -4,6 +4,8 @@
 
 支持环境: XP  -  Windows 10 全系统
 
+```certutil /?```  # 帮助
+
 
 下载文件： ```certutil.exe -urlcache -split -f https://raw.githubusercontent.com/3gstudent/test/master/version.txt file.txt```
 

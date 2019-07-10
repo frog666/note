@@ -8,12 +8,13 @@ https://xz.aliyun.com/t/1654/
 
 1.```bitsadmin /rawreturn /transfer getfile http://download.sysinternals.com/files/PSTools.zip e:\p.zip```
 
-
 2.```bitsadmin /rawreturn /transfer getpayload http://download.sysinternals.com/files/PSTools.zip e:\p.zip```
 
-3. 带进度条 ```bitsadmin /transfer myDownLoadJob /download /priority normal "http://img5.cache.netease.com/photo/0001/2013-03-28/8R1BK3QO3R710001.jpg" "e:\abc.jpg"```
+3.带进度条
 
-4、多条命令
+```bitsadmin /transfer myDownLoadJob /download /priority normal "http://img5.cache.netease.com/photo/0001/2013-03-28/8R1BK3QO3R710001.jpg" "e:\abc.jpg"```
+
+4.多条命令
  
 ``` 
 bitsadmin /create myDownloadJob

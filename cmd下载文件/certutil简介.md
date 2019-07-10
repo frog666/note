@@ -7,7 +7,9 @@
 ```certutil /?```  # 帮助
 
 
-下载文件： ```certutil.exe -urlcache -split -f https://raw.githubusercontent.com/3gstudent/test/master/version.txt file.txt```
+下载文件： 
+
+```certutil.exe -urlcache -split -f https://raw.githubusercontent.com/3gstudent/test/master/version.txt file.txt```
 
 **清缓存** ```certutil.exe -urlcache -split -f https://raw.githubusercontent.com/3gstudent/test/master/version.txt delete```
 

@@ -14,9 +14,7 @@ https://xz.aliyun.com/t/1654/
 
 3. 带进度条
 
-```bitsadmin /transfer myDownLoadJob /download /priority normal "http://img5.cache.netease.com/photo/0001/2013-03-
-
-28/8R1BK3QO3R710001.jpg" "e:\abc.jpg"```
+```bitsadmin /transfer myDownLoadJob /download /priority normal "http://img5.cache.netease.com/photo/0001/2013-03-28/8R1BK3QO3R710001.jpg" "e:\abc.jpg"```
 
 4、多条命令
  

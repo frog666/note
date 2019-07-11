@@ -1,5 +1,5 @@
 
-cscript download.vbs http://xxxxxx/index.md 111.txt
+cscript download.vbs http://xxxxxx/index.md 111.txt      # 下载到当前/指定目录
 
 
 亲测下载txt没问题。
@@ -13,3 +13,5 @@ cscript download.vbs http://xxxxxx/index.md 111.txt
  用法 ```cscript downloadfile.vbs```
 
 下载图片的另一种方式：可以后缀名取a.txt,下到本地重命名a.png
+
+

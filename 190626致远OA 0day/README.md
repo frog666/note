@@ -1,6 +1,6 @@
 payload.txt 为 post 在和payload,注意payload 字符间隔
 
-```DBSTEP V3.0     355             0               666             DBSTEP=OKMLlKlV```
+DBSTEP V3.0     355             0               666             DBSTEP=OKMLlKlV
 
 **注意：这一行的内容和间距不可修改**
 

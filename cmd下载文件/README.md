@@ -102,3 +102,19 @@ net use * /del  断开所有IPC$连接
 
 [IPC连接](https://blog.csdn.net/flyingleo1981/article/details/18763229)
 
+Notepad 文件下载
+这个姿势很神奇。
+首先打开notepad，就是我们常说的记事本，点击文件-》打开，在文件名称内输入完整的URL，回合，就会发现记事本中的内容就是我们访问的URL的文本内容。
+
+powershell nishang 进行文件下载
+
+这里我们可以用ExeToText脚本，将想要下载的exe文件转换成txt，在用记事本打开，然后复制其中的内容，通过rdp剪贴板复制到目标机器上的txt文本，再通过TextToExe脚本转换为exe就好了。
+
+csc.exe工具
+在Windows下，c的编译器默认是在C:\Windows\Microsoft.NET\framework\
+
+version的话，不同位数的机器不一样，看情况而定
+
+进入不同版本version文件夹，
+
+csc.exe /out:c:\users\pino\evil.exe c:\users\pino\evil.c   (未测试)

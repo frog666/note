@@ -29,8 +29,23 @@ js和certutil,bitsadmin,vbs
 
 具体参考[Windows内网渗透提权的几个实用命令](https://www.freebuf.com/articles/system/114731.html)
 
-https://www.jianshu.com/p/502441bcebe0
-
-perl -MLWP::Simple -e 'getstore ("https://raw.githubusercontent.com/3gstudent/test/master/version.txt","163.txt")'
+https://www.jianshu.com/p/502441bcebe0   15种下载
 
 
+测试失败 perl -MLWP::Simple -e "getstore '("https://raw.githubusercontent.com/3gstudent/test/master/version.txt","163.txt")'"
+
+perl -e "print 'Hello World \n'"   
+
+downloader常用方法如下：
+
+certUtil
+powershell
+csc
+vbs
+JScript
+hta
+bitsadmin
+wget
+debug
+ftp
+ftfp

@@ -60,3 +60,14 @@ python cmd 下载文件
 
 
 httpdownload.rb 可用ruby 下载 http链接的文件，https暂不知道下载方法  ```$ruby httpdownload.rb ```
+
+
+php 下载代码有问题
+```
+<?
+$data = @file("http://txt.bookdown.net/home/down/txt/id/625");
+$f = fopen("1.txt", "w");
+fwrite($f, $data[0]);
+fclose($f);
+?>
+```

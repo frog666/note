@@ -31,8 +31,11 @@ js和certutil,bitsadmin,vbs
 
 https://www.jianshu.com/p/502441bcebe0   15种下载
 
+win7测试下载https会报错，提醒我丢失libeay_32.dll，libeay32.dll是OpenSSL所用动态链接库
 
-测试失败 perl -MLWP::Simple -e "getstore '("https://raw.githubusercontent.com/3gstudent/test/master/version.txt","163.txt")'"
+perl -MLWP::Simple -e "getstore ('http://www.163.com/','163.html')"
+
+测试失败 perl -MLWP::Simple -e "getstore ('https://raw.githubusercontent.com/3gstudent/test/master/version.txt','163.txt')"
 
 perl -e "print 'Hello World \n'"   
 
@@ -52,4 +55,5 @@ ftfp
 
 
 python cmd 下载文件
+
 ```python -c "import urllib2;u=urllib2.urlopen('https://raw.githubusercontent.com/3gstudent/test/master/version.txt');localfile=open('a.txt','w');localfile.write(u.read());localfile.close();"```

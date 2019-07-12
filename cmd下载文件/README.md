@@ -29,7 +29,8 @@ js和certutil,bitsadmin,vbs
 
 具体参考[Windows内网渗透提权的几个实用命令](https://www.freebuf.com/articles/system/114731.html)
 
+https://www.jianshu.com/p/502441bcebe0
 
-cscript.exe downloadfile.vbs
+perl -MLWP::Simple -e 'getstore ("https://raw.githubusercontent.com/3gstudent/test/master/version.txt","163.txt")'
 
 

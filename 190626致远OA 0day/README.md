@@ -46,6 +46,6 @@ batchtqadmin.py 为用户提权代码，有时当前登陆用户权限不够，�
 
 batchup.py      为批量上传代码，利用js下载shell到目标
 
-
+使用方法，batchvultest.py 提取vul ip 到success.txt,batchtqadmin.py 同一对当前用户提权, batchup.py 批量上传 保存到 webshell.txt
 
 

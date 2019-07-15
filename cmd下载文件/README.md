@@ -117,4 +117,8 @@ version的话，不同位数的机器不一样，看情况而定
 
 进入不同版本version文件夹，
 
+C#命令行编辑器csc.exe  将木马的源码写好，直接在目标及其上编译就好了
+
 csc.exe /out:c:\users\pino\evil.exe c:\users\pino\evil.c   (未测试)
+
+

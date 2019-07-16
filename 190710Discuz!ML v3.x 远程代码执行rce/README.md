@@ -1,3 +1,5 @@
+[discuzML官网](http://discuz.ml/download)
+
 漏洞发生的版本为 Discuz 国际版。Discuz!ML v3.X
 
 用户数量不多，所以影响不大 product of codersclub.org

@@ -17,3 +17,8 @@
 ### 优质博客
 
 [klion's blog](https://klionsec.github.io)
+
+(信息安全原创技术博客)[http://lawlietweb.com/]
+
+
+## [渗透师导航](https://www.shentoushi.top/)

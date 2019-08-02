@@ -176,11 +176,9 @@ firefox:F12 ，inspector/查看器，编辑html， 修改 maxlength
 
 **将链接发给该网站下的受害者，受害者点击时就会加载远程服务器（vps）上的cookie.js脚本，这里要提一点，用src加载远程服务器的js脚本，那么js的源就会变成加载它的域，从而可以读取该域的数据。这时，vps的数据库就接收到了cookie。**
 
-观察firebug的javascript控制台，看到已拦截跨源请求：同源策略禁止读取位于 http://192.168.1.101:808/steal.php 的远程资源。（原因：CORS 头缺少 'Access-Control-Allow-Origin'）
+观察firebug的javascript控制台，看到已拦截跨源请求：同源策略禁止读取位于 ```http://192.168.1.101:808/steal.php``` 的远程资源。（原因：CORS 头缺少 'Access-Control-Allow-Origin'）
 
-因为ajax严格遵从同源策略，当前加载cookie.js的域为http://192.168.255.151:8081,所以ajax不能读取不同域http://192.168.1.101下的数据，但是cookie已经被发送到了http://192.168.1.101域，steal.php已经将偷取到的cookie存放在了数据库中,而且页面没有刷新，很隐蔽。
-
-
+因为ajax严格遵从同源策略，当前加载cookie.js的域为```http://192.168.255.151:8081```,所以ajax不能读取不同域```http://192.168.1.101```下的数据，但是cookie已经被发送到了```http://192.168.1.101```域，steal.php已经将偷取到的cookie存放在了数据库中,而且页面没有刷新，很隐蔽。
 
 
 

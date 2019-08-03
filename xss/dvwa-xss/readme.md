@@ -8,6 +8,14 @@ win7虚拟机 ，ip 192.168.255.151，用phpstudy将dvwa 环境 搭在 8081端�
 
 火狐浏览器，谷歌浏览器有 xss filter
 
+文件说明：
+
+cookie.js 为获取cookie的js,没使用ajax，会跳转到密码修改成功页面，不推荐使用。
+
+b.js 为js操作ajax，支持最为广泛，payload 代码量较少。
+
+c.js 为jq操作ajax，需要payload引入支持jq的js，payload 较长。
+
 搭建数据库sql：
 
 ```

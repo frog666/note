@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # __author__:leezp
-# __date__:2019-08-02
+# __date__:2019-08-14
 # Local:  Win7 (python3)
-# Fofatq v2.1
+# Fofatq v2.2
 
 import requests
 from urllib import parse

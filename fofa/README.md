@@ -5,6 +5,11 @@ fofascan.py 配合 fofa.sql 使用，先导入mysql数据库结构文件 fofa.sq
 
 # **改动日志**
 
+* 2019-08-17|<2.2.1>| 
+
+	1.重写 file_put 方法 
+
+
 * 2019-08-14|<2.2>| 
 
 	1.session失效时控制台输出语句：```session 失效,请重新获取session```

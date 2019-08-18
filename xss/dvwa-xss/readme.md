@@ -197,3 +197,102 @@ firefox:F12 ，inspector/查看器，编辑html， 修改 maxlength
 htmlspecialchars 把预定义的字符&、”、 ’、<、>转换为 HTML 实体，防止浏览器将其作为HTML元素。转义可能引起跨站漏洞的标签
 
 http层做到防护，给cookie设置httponly属性，使cookie不能被javascript读取，才能有效防止用户cookie被盗用的问题
+
+
+
+### 19.08.15 dom xss 进阶
+
+
+#### HTML BOM Browser对象
+
+BOM：Browser Object Model，即浏览器对象模型，提供了独立于内容的、可以与浏览器窗口进行互动的对象结构。
+
+Browser对象：指BOM提供的多个对象，包括：Window、Navigator、Screen、History、Location等。
+
+ [Location 对象](https://www.runoob.com/jsref/prop-loc-hash.html) 
+
+```location.hash```	设置或返回从井号 (#) 开始的 URL（锚）,包含 # 号
+
+例如： ```http://localhost:808/3.jpg#1```
+
+location.hash   :    ```"#1"```
+
+不安全的js 代码：
+
+	eval(location.hash.substr(1))
+
+获取 url 中 # 号后面的部分，不含 # 号。
+
+```#document.write("<script/src=//http://localhost:808/a.js></script>")```
+
+本地测试未成功
+
+
+**PostMessage 跨域**
+
+[浅谈跨域威胁与安全](https://www.freebuf.com/articles/web/208672.html)
+
+
+PostMessage跨域是H5新引入的实现跨域窗口之间的通讯，可以安全地实现windows对象之间的跨域通信。
+
+有一个接受消息的窗口，一般用window.addEventListener(“message”,receiveMessage.false),用以接受消息数据
+
+PostMessage实现流程
+
+1、创建一个页面A，定义一个Postmessage方法
+
+2、创建一个页面B，定义一个window.addEventListener(“message”，function）方法接受来源于Postmessage方法的消息
+
+3、页面A使用Iframe标签包含页面B，触发Postmessage方法即可
+
+
+
+**理论基础**：
+
+DOM based XSS 的产生原因，我们只需要关注两个方面
+
+A） 脏数据的输入
+
+location
+
+document.referrer
+
+window.name
+
+ajax response
+
+jsonp
+
+form下的inputs框
+
+ 
+
+B) 脏数据的输出
+
+document.write(ln)
+
+innerHTML =
+
+outterHTML =
+
+写 window.location 操作
+
+写 javascript: （伪协议后内容的自定义）
+
+eval、setTimeout 、setInterval 等直接执行
+
+关于DOM XSS 的输入点， "DOM XSS之父stefano.dipaola" [总结了一个表](http://code.google.com/p/domxsswiki/)：
+
+
+
+
+浏览器调试xss
+
+window.postMessage(alert(1), 'https://www.iqiyi.com/common/upload.html');
+
+window.postmessage 劫持
+
+https://www.freebuf.com/vuls/194714.html
+
+
+dom  型xss原理？

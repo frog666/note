@@ -35,11 +35,11 @@ def saveStrToFile(file, str):
         output.write(str)
 
 
-# 将列表逐行写如文件中
-def saveListToFile(file, list):
+# 将列表逐行写如文件中    # a 追加，w覆盖
+def saveListToFile(file, list):       
     s = '\n'.join(list)
-    with open(file, 'w') as output:
-        output.write(s)
+    with open(file, 'a') as output:
+        output.write(s+'\n')
 
 
 def apiTest():
@@ -77,7 +77,7 @@ def apiTest():
             else:
                 print('[-] info : ' + str(e.args))
         else:
-            if page == 10:  # 设定页码
+            if page == 5:  # 设定页码
                 break
             page += 1
 
@@ -105,5 +105,5 @@ def apileftcount():
 
 
 if __name__ == '__main__':
-    # main()
+    main()
     apileftcount()  # 查询剩余api

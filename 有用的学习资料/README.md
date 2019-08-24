@@ -25,4 +25,6 @@
 
 [浪子燕青博客](http://www.langzi.fun/)
 
+[一些cms注入](http://www.f4ckweb.top/)
+
 ## [渗透师导航](https://www.shentoushi.top/)

@@ -60,7 +60,7 @@ class FofaSpider:
         try:
             # if (i % 15 == 0):  # 每15页休眠20秒
             #    time.sleep(20)
-            response = requests.get(url=url, proxies={random.choice(PROXIES)}, headers=self.headers, timeout=5)
+            response = requests.get(url=url, headers=self.headers, timeout=5)
             soup = BeautifulSoup(response.content.decode('utf-8'), 'lxml')
             all_t = soup.find_all("div", class_="list_mod_t")
             all_c = soup.find_all("div", class_="list_mod_c")
@@ -83,7 +83,7 @@ class FofaSpider:
                 time.sleep(20)  # 等待20秒
                 # 重新爬取丢失这一页
                 try:
-                    response = requests.get(url=url, proxies={random.choice(PROXIES)}, headers=self.headers, timeout=5)
+                    response = requests.get(url=url, headers=self.headers, timeout=5)
                     soup = BeautifulSoup(response.content.decode('utf-8'), 'lxml')
                     all_t = soup.find_all("div", class_="list_mod_t")
                     all_c = soup.find_all("div", class_="list_mod_c")
@@ -123,8 +123,9 @@ class FofaSpider:
             print("第" + str(i) + "页 " + query_url)
             fofaSpider.spider_ip(query_url, i)
 
+    # a：附加写方式打开，不可读；a+: 附加读写方式打开，必要时创建 ， 默认r只读,不可读的打开方式：w和a
     def runipexcept(self):
-        f = open("ipexcept.txt", "r", encoding='utf-8')
+        f = open(self.ip_except_txt, "a+", encoding='utf-8')
         for line in f:
             query_url = "https://fofa.so/result?page=" + str(
                 line.strip()) + "&qbase64=" + fofaSpider.query_str_qbase64_urlencode
@@ -134,13 +135,13 @@ class FofaSpider:
 
 '''
 input:
-query_str = "memcached"
+query_str = 'memcached'
 Cookie = '_fofapro_ars_session=XXX;'
 '''
 if __name__ == "__main__":
     # query_str 查询字符串
-    query_str = '"memcached"'
-    Cookie = '_fofapro_ars_session=XXX;'
+    query_str = '"dedeCms"'
+    Cookie = '_fofapro_ars_session=XXX'
     ip_txt = 'ip.txt'
     ip_except_txt = 'ipexcept.txt'
     X_CSRF_Token = ''
@@ -151,8 +152,8 @@ if __name__ == "__main__":
     # 要爬取得页数，page=n+1,page = 2 则只爬取第一页
 
     starttime = datetime.datetime.now()
-    fofaSpider.base(1, 371)
-    # fofaSpider.runipexcept()  # 跑完 base()这个方法，跑 runipexcept()这个方法，把剩余IP自动跑一边
+    fofaSpider.base(1, 4)
+    fofaSpider.runipexcept()  # 跑完 base()这个方法，跑 runipexcept()这个方法，把剩余IP自动跑一边
     endtime = datetime.datetime.now()
     print('程序结束', end=' ')  # end=' '不换行输出
     print(datetime.datetime.now())

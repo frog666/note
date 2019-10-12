@@ -1,9 +1,15 @@
 ## fofa 利用脚本
 
-fofascan.py 配合 fofa.sql 使用，先导入mysql数据库结构文件 fofa.sql,功能为利用fofa api下载数据并存入数据库
+1.fofascan.py 配合 fofa.sql 使用，先导入mysql数据库结构文件 fofa.sql,功能为利用fofa api下载数据并存入数据库
 
+2.如果你是普通会员，那么请使用这个fofa提权脚本 Fofatqv2.2.2.py ，经过长期测试已经非常稳定。
 
 # **改动日志**
+
+* 2019-10-11|<2.2.2>| 
+
+	1.修复不写入直接读取ipexcept.txt文件时 由于 a+ 方式打开文件，指针默认在文件结尾导致的 无法读取文件
+
 
 * 2019-08-17|<2.2.1>| 
 
@@ -44,5 +50,17 @@ fofascan.py 配合 fofa.sql 使用，先导入mysql数据库结构文件 fofa.sq
 1.~~增加多线程，尝试使用2个线程，发现很快崩溃，fofa限制访问频率限制的很死，所以单线程跑吧。~~
 
 2.except 异常嵌套，直接进入最外层异常的问题
+
+107行
+
+	   except:  # 这个except没有走，走的外层except,暂未解决
+	                self.file_put(self.ip_except_txt, str(i) + "\n")
+	                pass
+	except:  # requests.exceptions.ReadTimeout as E:
+	        print('ipexcept写入 ' + str(i))
+	        self.file_put(self.ip_except_txt, str(i) + "\n")
+	        pass
+
+(这里我不是很懂，但对程序运行影响不大，所以没有深入研究，哪位师傅知道如何修改请提交个pull request)
 
 3.程序爬取过程中代理切换，pac切换全局等，程序可能会报错

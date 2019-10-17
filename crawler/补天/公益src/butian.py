@@ -18,7 +18,7 @@ headers = {
     'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
     'X-Requested-With': 'XMLHttpRequest',
     'Referer': 'https://www.butian.net/Reward/plan',
-    'Cookie': 'PHPSESSID=v77hlpk0edftajlpt0j0gbfnq4; btlc_ba52447ea424004a7da412b344e5e41a=36eae3aebbabc7c0583d218d8cf97a8ca81c42bdf4907c6242f0e074e49c4848; __q__=1571209656243',
+    'Cookie': 'your cookie',
     'Connection': 'keep-alive'
 }
 # 禁用安全警告
@@ -93,7 +93,7 @@ def Url():
         'Accept-Language': 'zh-CN,zh;q=0.8,en-US;q=0.5,en;q=0.3',
         'Accept-Encoding': 'gzip, deflate',
         'Referer': 'https://www.butian.net',
-        'Cookie': 'PHPSESSID=v77hlpk0edftajlpt0j0gbfnq4; btlc_ba52447ea424004a7da412b344e5e41a=36eae3aebbabc7c0583d218d8cf97a8ca81c42bdf4907c6242f0e074e49c4848; wzws_cid=3a650d7adb6c5cfc14c11a0c9eea7345f366c19bcead1a027add4671095fffba72e0bfbc51e53c8ff874c00fa33bf2b6b9f8c742333eb1109b2e90ad848fd246; __q__=1571221153089',
+        'Cookie': 'your cookie',
         'Connection': 'keep-alive',
         'Upgrade-Insecure-Requests': '1',
         'Cache-Control': 'max-age=0'

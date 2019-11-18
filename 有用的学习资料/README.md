@@ -29,4 +29,6 @@
 
 [一些cms注入](http://www.f4ckweb.top/)
 
+[麻薯](http://uuzdaisuki.com/)  **内网渗透相关**
+
 ## [渗透师导航](https://www.shentoushi.top/)

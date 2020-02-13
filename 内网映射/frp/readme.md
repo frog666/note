@@ -38,3 +38,7 @@
 	use_encryption = false
 	use_compression = true
 	custom_domains= your domain registrated
+
+
+
+

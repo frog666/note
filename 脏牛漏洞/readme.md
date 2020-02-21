@@ -228,7 +228,7 @@ https://github.com/bindecy/HugeDirtyCowPOC
 poc运行显示成功后，只是表示修改零页成功，覆盖了巨大零内存页。需要运行其他应用程序，当其他应用程序读取零页，进行非法操作时即可触发crash，引爆漏洞。
 
 
-具体如何利用火狐使之崩溃并提权(https://bbs.pediy.com/thread-223056.htm)，没有看懂
+具体如何[利用火狐使之崩溃并提权](https://bbs.pediy.com/thread-223056.htm)，没有看懂
 
 ## 修复建议
 

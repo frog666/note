@@ -186,3 +186,35 @@ windows下：修改my.ini 在[mysqld]内加入secure_file_priv =
 
 linux下：修改my.cnf 在[mysqld]内加入secure_file_priv =
 
+安装php
+
+CentOs 7.X 添加源
+
+	rpm -Uvh https://mirror.webtatic.com/yum/el7/epel-release.rpm
+	rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
+
+安装php （5.6）,如果想升级到7.0把上面的56w换成70w就可以了。
+
+
+yum install php56w.x86_64 php56w-cli.x86_64 php56w-common.x86_64 php56w-gd.x86_64 php56w-ldap.x86_64 php56w-mbstring.x86_64 php56w-mcrypt.x86_64 php56w-mysql.x86_64 php56w-pdo.x86_64
+
+安装PHP FPM   (如果想升级到7.0把上面的56w换成70w就可以了。)
+
+yum install php56w-fpm   
+
+
+添加apache php 支持  （参考 https://www.cnblogs.com/yulibostu/articles/10560904.html）
+
+	vim /etc/httpd/conf/httpd.conf
+
+添加
+
+	LoadModule php5_module modules/libphp5.so
+
+在这```<IfModule mime_module>```添加
+
+	<IfModule mime_module>
+
+		AddType application/x-httpd-php .php
+		AddType applicaiton/x-httpd-php-source .phps
+

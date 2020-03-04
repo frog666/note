@@ -79,7 +79,7 @@ systemctl start firewalld
 	
 	firewall-cmd --zone=public --remove-port=80/tcp --permanent
 
-发现还是不行，问华为云客服，客服说  安全组的设置只能在console 界面修改，这一点腾讯云做的就不错。因为有时候我可能手机连terminal，登陆网页console太麻烦
+发现还是不行，问华为云客服，客服说  安全组的设置只能在console 界面 **Sys-default安全组** 修改，这一点腾讯云做的就不错。因为有时候我可能手机连terminal，登陆网页console太麻烦
 
 ![](2.jpg)
 
@@ -218,3 +218,27 @@ yum install php56w-fpm
 		AddType application/x-httpd-php .php
 		AddType applicaiton/x-httpd-php-source .phps
 
+
+安装 nc:
+
+wget https://sourceforge.net/projects/netcat/files/netcat/0.7.1/netcat-0.7.1.tar.gz
+
+tar -zxvf netcat-0.7.1.tar.gz -C /usr/local
+
+cd /usr/local/netcat-0.7.1
+
+编译配置文件
+
+	./configure
+	make && make install
+
+vim /etc/profile
+
+	export NETCAT_HOME=/usr/local/netcat-0.7.1
+	export PATH=$PATH:$NETCAT_HOME/bin
+
+source /etc/profile
+
+nc -h
+
+**华为云需要同时开启防火墙入站规则端口，和web 控制台安全组添加规则**

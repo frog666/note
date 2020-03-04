@@ -75,7 +75,13 @@ JDK对于JNDI的修复
 ![](jndi-repair.jpg)
 
 
+	添加出站端口规则
+	
+	firewall-cmd --zone=public --add-port=222/tcp --permanent
 
+	不关闭服务重载防火墙
+
+	firewall-cmd --reload
 
 
 https://github.com/cowtowncoder/jackson-compat-minor

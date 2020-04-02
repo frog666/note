@@ -64,15 +64,23 @@ poc有很多，其一，
 	/ispirit/interface/gateway.php?json={}&a=<?php file_put_contents('1.php','hello123');?>
 
 先在浏览器访问，
+
 ![](7.jpg)
+
 发现"<"被浏览器url编码了
+
 ![](8.png)
+
 用burp重新发包。
+
 ![](9.jpg)
+
 成功写入日志。(写日志的方式省去了上传)
+
 ![](10.png)
 
 文件包含
+
 ![](11.jpg)
 
 如果php poc 为 ```<?php file_put_contents('1.php','hello123');?>```
@@ -151,18 +159,27 @@ eg:
 一些趣事。
 
 正常该用post包含的。
+
 ![](post-include.jpg)
 
 get包含就很玄学了。正常get请求(不空行)是不行的,在浏览器GET请求也是不能包含的。
+
 ![](include.jpg)
 
 注意看我光标位置。必须空出来一行，否则不成功。get无请求体，不知道是什么原因。
+
 ![](include2.jpg)
+
 空两行试试
+
 ![](include3.jpg)
+
 发包，Content-Length都有了，可真牛啊。
+
 ![](include4.jpg)
+
 wireshark抓个包,get没请求体呀。见```strange-get-include.pcap```。
+
 ![](1.jpg)
 
 

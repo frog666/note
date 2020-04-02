@@ -380,3 +380,21 @@ chmod +x metasploit-latest-linux-x64-installer.run
 ./metasploit-latest-linux-x64-installer.run
 
 
+
+
+centos pcre 安装：
+
+	wget https://ftp.pcre.org/pub/pcre/pcre-8.44.tar.bz2
+	
+	tar xjpf  pcre-8.44.tar.bz2 
+	
+	cd pcre-8.44
+	
+	./configure  --enable-utf8
+	
+	make && make install
+
+
+安装 python pcre:
+
+	pip install python-pcre==0.6

@@ -398,3 +398,20 @@ centos pcre 安装：
 安装 python pcre:
 
 	pip install python-pcre==0.6
+
+
+安装 go:
+
+	wget https://dl.google.com/go/go1.14.1.linux-amd64.tar.gz
+
+	tar -zxvf go1.14.1.linux-amd64.tar.gz
+
+	vim /etc/profile
+
+export GOROOT=/go path/go #设置为go安装的路径
+
+export GOPATH=$HOME/go #默认安装包的路径
+
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+
+source /etc/profile

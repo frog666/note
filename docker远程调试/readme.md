@@ -21,11 +21,13 @@ docker: https://github.com/vulhub/vulhub/blob/master/weblogic/CVE-2017-10271
 
 运行```docker-compose up -d```下载和启动镜像。
 
+**```-d``` 是后台模式，不加为临时模式，可以看 debug信息。**
+
 下载完成后进入docker容器，执行
 
-	apt-get upgrade
+	apt-get update
 
-	apt-get install vim 
+	apt-get install vim
 
  	vim /root/Oracle/Middleware/user_projects/domains/base_domain/bin/setDomainEnv.sh
 

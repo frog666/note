@@ -30,6 +30,13 @@ ln -s /usr/local/python3/bin/python3 /usr/bin/python3
 
 python3 -V
 
+安装 httpie
+
+httpie 是一个 httpclient 工具，能帮助我们快速的进行http请求，类似于curl但是语法做了很多简写
+
+```pip install httpie```
+
+use： ```http get baidu.com```
 
 安装jdk 1.8
 

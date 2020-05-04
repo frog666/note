@@ -77,3 +77,8 @@ File-Project Structure-Project Settings-Modules-Dependencies-右边有个"+"号�
 如果出现下图，可能是docker未启动。或网络未连通。
 
 ![](8.jpg)
+
+
+## 其他资料
+
+[使用 Idea 远程断点调试 Weblogic 服务器(非docker)的操作步骤](https://blog.csdn.net/defonds/article/details/83510668)

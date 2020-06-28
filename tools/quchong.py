@@ -13,7 +13,7 @@ a = 0
 for line in f:
     if line.strip() not in lines_readed:
         a += 1
-        outfile.write(line.strip())
+        outfile.write(line.strip()+'\n')
         lines_readed.add(line.strip())  # 已读取的存 set
         print(a)
 outfile.close()

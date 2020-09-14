@@ -422,3 +422,10 @@ export GOPATH=$HOME/go #默认安装包的路径
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 source /etc/profile
+
+## 新的阿里云服务器 53 端口被占用
+
+![](20.png)
+
+https://www.itren.org/319.html
+

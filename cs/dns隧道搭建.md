@@ -262,6 +262,127 @@ Web Log　　　　　　　查看web日志。
 
 
 
+### dns tunnel 环境搭建
+
+1.购买了阿里云服务器一个，带公网ip，登录服务器控制台，将防火墙策略入站规则53端口打开:
+
+![](12.png)
+
+![](13.png)
+
+2.购买了阿里云域名一个，并实名注册
+
+3.dns 解析服务使用国外的免费dns解析平台 [cloudflare](https://www.cloudflare.com/)
+
+4.在阿里云控制台-域名-管理，配置修改成 cloudflare 的 dns 服务器 
+
+![](1.png)
+
+5.登陆 cloudflare 官网，添加购买的阿里云域名，并配置 A记录和NS记录：
+
+A类型的内容里填写ip地址， NS记录填写自定义用于递归查询的dns。
+
+![](2.png)
+
+这里也可以改成代理模式，用于别人ping 你的域名时隐藏ip,这里我用的默认的配置。
+
+![](3.png)
+
+
+dig +trace 查询：
+
+	dig +trace ns3.trumpclub.xyz
+
+![](4.png)
+
+然而，dig +trace 有时是不准确的， 使用不存在的 域名有时也可以解析，不会报错，例如：
+
+	dig +trace ns30.funnyboys.store
+
+![](5.png)
+
+所以使用```nslookup```检查dns配置情况 ：
+
+![](6.png)
+
+出现 ```0.0.0.0``` 即为配置成功。
+
+6.打开cs，我这里用的cs4.1，新建一个listener，
+
+![](7.png)
+
+![](9.png)
+
+7.生成攻击载荷：
+
+```Attack -> Web Drive-by -> Scripted Web Delivery (S)```
+
+![](8.png)
+
+8.测试payload，```Attack -> Web Drive-by -> Manage  ```
+
+会出现一个 Sites 页面：
+
+![](10.png)
+
+在浏览器看是否可以访问：
+
+![](11.png)
+
+9.接下来找一个纯净的靶机环境，用于抓取数据包，本机抓包会有很多干扰。
+
+靶机运行payload:
+
+![](14.png)
+
+等待1分钟左右，出现黑框：
+
+![](16.png)
+
+此时的流量包：
+
+![](15.png)
+
+这时可以尝试执行命令，否则等了很久没有自己上线(开始没有在Beacon输入命令以为是自己配置错误)。在Beacon 执行命令：
+
+	shell whoami
+
+等待1分钟左右，返回执行结果，并上线(cs输入命令时，它首先会自动 check in
+再执行其他命令，这就是所谓的「直到有可用任务时才会 check in」)：
+
+![](17.png)
+
+这一步也可以修改sleep时间快速上线：
+
+![](18.png)
+
+10.
+
+![](20.png)
+
+会有很多 AAAA 的Query
+
+![](19.png)
+
+修改模式为 TXT 模式：
+
+![](21.png)
+
+这里有点疑问，用TXT传输数据，也没有看到很多TXT Query。
+
+1.修改 域名长度
+
+https://www.cobaltstrike.com/help-malleable-c2
+
+![](22.png)
+
+在C2_profile文件可以设置dns 域名最大长度。
+
+据说DNS TXT通道将使用该值的100%；DNS AAAA通道将使用该值的50%；DNS A通道将使用该值的25%。
+
+2.dns 隧道上线cs 拿不到外网ip
+
+
 ## 参考资料
 
 https://klionsec.github.io/2017/12/28/cobalt-strike-dns/
@@ -289,6 +410,7 @@ https://my.freenom.com/ 开启代理注册域名
 ![](freenom-01.png)
 
 ![](freenom-02.png)
+
 参考资料
 
 https://www.cnblogs.com/ssooking/p/6364639.html

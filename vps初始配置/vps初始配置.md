@@ -415,13 +415,15 @@ centos pcre 安装：
 
 	vim /etc/profile
 
-export GOROOT=/go path/go #设置为go安装的路径
+export GOROOT=/go path/go #设置为go安装路径
 
-export GOPATH=$HOME/go #默认安装包的路径
+export GOPATH=$HOME/go #环境变量
 
-export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+export PATH=$PATH:$GOROOT/src
 
 source /etc/profile
+
+推荐使用 ```go mod```
 
 ## 新的阿里云服务器 53 端口被占用
 

@@ -383,6 +383,14 @@ https://www.cobaltstrike.com/help-malleable-c2
 2.dns 隧道上线cs 拿不到外网ip
 
 
+## cs 扫描端口
+
+要加none 参数：
+
+![](23.png)
+
+
+
 ## 参考资料
 
 https://klionsec.github.io/2017/12/28/cobalt-strike-dns/

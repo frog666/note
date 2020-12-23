@@ -228,3 +228,22 @@ IP 协议扫描可以帮助用户确定目标主机哪些是支持IP协议的，
 [windows 通过iis开通本地的ftp](https://zhidao.baidu.com/question/543348086.html)
 
 ![](ftp.png)
+
+
+### nmap 脚本
+
+smb-os-discovery.nse
+
+经测试，只有扫描同网段真机时才有附加信息。
+
+![](4.png)
+
+
+
+其次，内网同网段使用nmap扫描可以识别出VM
+
+![](5.png)
+
+跨网段即使网络互通也没识别出VM
+
+![](6.png)

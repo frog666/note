@@ -389,6 +389,24 @@ https://www.cobaltstrike.com/help-malleable-c2
 
 ![](23.png)
 
+## cs 上传文件
+
+	sleep 0
+
+	upload
+
+	选择需要上传的文件
+
+上传速度较慢，一般在最后上传的字节数变少可以判断上传结束。
+
+![](25.jpg)
+
+查看默认上传路径：
+
+![](24.jpg)
+
+
+
 
 
 ## 参考资料

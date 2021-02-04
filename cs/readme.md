@@ -499,3 +499,7 @@ https://www.cnblogs.com/ssooking/p/6017333.html
 	不关闭服务重载防火墙
 
 	firewall-cmd --reload
+
+## 参考资料
+
+[**DNS 原理入门--阮一峰**](http://www.ruanyifeng.com/blog/2016/06/dns.html)

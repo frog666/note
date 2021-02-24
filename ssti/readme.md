@@ -20,6 +20,12 @@ Web应用程序经常使用模板系统（例如Twig和FreeMarker）将动态内
 	if __name__ == "__main__":
 	    app.run('0.0.0.0');
 
+## tplmap自动化攻击
+
+	git clone https://github.com/epinna/tplmap
+
+	./tplmap.py -u <url>
+
 ## 参考资料
 
 [服务器端模板注入](https://portswigger.net/research/server-side-template-injection)
